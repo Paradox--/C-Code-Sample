@@ -1,4 +1,4 @@
-#include <stdio.h> /* Assumed this would be needed by default. */
+#include <stdio.h>
 
 /* 
    Defines::  
