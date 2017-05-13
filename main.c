@@ -28,8 +28,8 @@
 int main(int argc, char **argv)
 {
     /* Methods */
-    int CountNumWordsInSentence(const char* InString);
-    int findLenght(const char* string);
+    int CountNumWordsInSentence(const char *InString);
+    int findLenght(const char *string);
     int isWhiteSpace(char n);
     
     /* Given Cases */
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
    @Return:: int : 0 If the string is NULL, else will return the number
                    of blocks in an array of characters.
  */
-int CountNumWordsInSentence(const char* InString)
+int CountNumWordsInSentence(const char *InString)
 {
     if(!InString) return 0;                              /* If Null string, return 0 */
     else                                                 /* Else process the string  */
@@ -81,7 +81,7 @@ int CountNumWordsInSentence(const char* InString)
    @Return:: int : 0 If the string is NULL, else will return the length of the
                    String.
  */
-int findLenght(const char* string)
+int findLenght(const char *string)
 {
     if(!string) return 0;   /* If NULL string return 0                */
     else                    /* Else iterate through the string        */
