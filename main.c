@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 {
     /* Methods */
     int CountNumWordsInSentence(const char *InString);
-    int findLength(const char *string);
     int isWhiteSpace(char n);
     
     /* Given Cases */
@@ -58,40 +57,16 @@ int CountNumWordsInSentence(const char *InString)
     if(!InString) return 0;                              /* If Null string, return 0 */
     else                                                 /* Else process the string  */
     {
-        int numOfWords = 0, white = 0, i;
-        int length = findLength(InString);               /* Find the Length          */
-        
-        for(i = 0; i < length; i++)                      /* For each place in the string          */
-            if(!isWhiteSpace(InString[i]) && i == 0)     /* If the first place, and not a white   */
-                numOfWords++;                            /* space, increment the num of words up  */
-            else if(!isWhiteSpace(InString[i]) && white == TRUE)
-            {                                            /* Else if, not a white space and, last character               */
-                numOfWords++;                            /* was a white space, then we must be on a new word             */
-                white = FALSE;                           /* increment the wordcount, and flip the whitespace check back  */
-            }
-            else if(isWhiteSpace(InString[i]))           /* Else, if it is at least is at least a white space  */
-                white = TRUE;                            /* then flip the whitespace check                     */
-        
+       int numOfWords = 0, white = FALSE; 
+      
+       while(*InString != TERMINATOR){                         
+            if(!white && !isWhiteSpace(*InString))              /* If the last wasnt a white space and the      */
+               numOfWords++;                                    /* current isnt a white space. Increment.       */
+            white = !isWhiteSpace(*InString);                   /* Set the white check based on the current pos */
+            *InString++;
+       }
+       
         return numOfWords;                               /* Return the num of words. */
-    }
-}
-
-/* Determine the length of the string
-   @Param:: const char* string : Character array to check
-   @Return:: int : 0 If the string is NULL, else will return the length of the
-                   String.
- */
-int findLength(const char *string)
-{
-    if(!string) return 0;   /* If NULL string return 0                */
-    else                    /* Else iterate through the string        */
-    {                       /* Till we find the terminating character */
-        int len = 0;
-        
-        while(*string++ != TERMINATOR)
-            ++len;          /* Increment the length  */
-        
-        return len;         /* Return the length     */
     }
 }
 
